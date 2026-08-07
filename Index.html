@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xadrez Master</title>
+
+    <!-- CSS Chessboard.js -->
+    <link rel="stylesheet" href="https://unpkg.com/@chrisoakman/chessboardjs@1.0.0/dist/chessboard-1.0.0.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="theme-classic">
+
+    <!-- Modal de Login -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <h2>Entrar no Xadrez Master</h2>
+            <p>Digite seu apelido para salvar seu histórico de partidas neste navegador:</p>
+            <form id="loginForm">
+                <input type="text" id="usernameInput" placeholder="Seu apelido/nome" required maxlength="15">
+                <button type="submit">Começar a Jogar</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="app-container">
+        <!-- Sidebar de Perfil e Ajustes -->
+        <aside class="sidebar">
+            <div class="profile-card">
+                <h3 id="userDisplay">Jogador</h3>
+                <div class="stats">
+                    <p>Vitórias: <span id="winsCount">0</span></p>
+                    <p>Derrotas: <span id="lossesCount">0</span></p>
+                    <p>Empates: <span id="drawsCount">0</span></p>
+                </div>
+            </div>
+
+            <div class="settings-card">
+                <h3>Personalização</h3>
+                
+                <label for="boardTheme">Tema do Tabuleiro:</label>
+                <select id="boardTheme">
+                    <option value="classic">Verde Clássico</option>
+                    <option value="dark">Dark / Grafite</option>
+                    <option value="wood">Madeira</option>
+                    <option value="neon">Neon Cyberpunk</option>
+                </select>
+
+                <label for="pieceTheme">Estilo das Peças:</label>
+                <select id="pieceTheme">
+                    <option value="wikipedia">Padrão (Wikipedia)</option>
+                    <option value="alpha">Alpha Minimalista</option>
+                    <option value="chesspro">Chesspro</option>
+                </select>
+
+                <label for="difficulty">Dificuldade do Bot:</label>
+                <select id="difficulty">
+                    <option value="1">Iniciante</option>
+                    <option value="2" selected>Intermediário</option>
+                    <option value="3">Avançado</option>
+                </select>
+
+                <button id="resetStatsBtn" class="btn-secondary">Zerar Estatísticas</button>
+                <button id="logoutBtn" class="btn-secondary">Trocar de Usuário</button>
+            </div>
+        </aside>
+
+        <!-- Área Central do Jogo -->
+        <main class="main-content">
+            <header>
+                <h1>Xadrez vs IA</h1>
+                <button id="resetBtn">Novo Jogo</button>
+            </header>
+
+            <div id="board" class="board"></div>
+
+            <div class="status-box">
+                <p id="status">Aguardando login...</p>
+            </div>
+        </main>
+    </div>
+
+    <!-- Bibliotecas JS -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chess.js/0.10.3/chess.min.js"></script>
+    <script src="https://unpkg.com/@chrisoakman/chessboardjs@1.0.0/dist/chessboard-1.0.0.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

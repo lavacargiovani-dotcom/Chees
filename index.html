@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChessPro Master V3</title>
+    
+    <!-- CSS Local ou CDN -->
+    <link rel="stylesheet" href="https://unpkg.com/@chrisoakman/chessboardjs@1.0.0/dist/chessboard-1.0.0.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="theme-green">
+
+    <div class="app">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">
+                <span class="logo-icon">♟</span>
+                <h1>ChessPro V3</h1>
+            </div>
+            <div class="header-actions">
+                <button id="btnVsBot" class="active">Contra IA</button>
+                <button id="btnPassAndPlay">2 Jogadores (Local)</button>
+            </div>
+        </header>
+
+        <!-- Layout Principal -->
+        <main class="main-layout">
+            
+            <!-- Area do Tabuleiro + Barra de Vantagem -->
+            <section class="board-container">
+                
+                <!-- Barra de Avaliacao/Vantagem -->
+                <div class="eval-bar-container">
+                    <div id="evalBar" class="eval-bar" style="height: 50%;"></div>
+                    <span id="evalScore" class="eval-score">0.0</span>
+                </div>
+
+                <!-- Tabuleiro + Jogadores -->
+                <div class="board-area">
+                    <!-- Oponente -->
+                    <div class="player-tag top">
+                        <div class="player-info">
+                            <span class="avatar">🤖</span>
+                            <span class="player-name" id="opponentName">Stockfish Bot</span>
+                        </div>
+                        <div class="player-extras">
+                            <div id="topCaptured" class="captured-pieces"></div>
+                            <div id="topTimer" class="timer">10:00</div>
+                        </div>
+                    </div>
+
+                    <!-- Div do Tabuleiro -->
+                    <div id="board" class="board"></div>
+
+                    <!-- Jogador -->
+                    <div class="player-tag bottom">
+                        <div class="player-info">
+                            <span class="avatar">👤</span>
+                            <span class="player-name" id="playerName">Você</span>
+                        </div>
+                        <div class="player-extras">
+                            <div id="bottomCaptured" class="captured-pieces"></div>
+                            <div id="bottomTimer" class="timer">10:00</div>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- Painel Lateral -->
+            <aside class="sidebar">
+                
+                <!-- Perfil -->
+                <div class="panel">
+                    <h3>Perfil</h3>
+                    <div class="stats-grid">
+                        <div class="stat"><span class="label">Rating:</span> <strong>1200</strong></div>
+                        <div class="stat"><span class="label">Vitórias:</span> <strong id="winsCount">0</strong></div>
+                        <div class="stat"><span class="label">Derrotas:</span> <strong id="lossesCount">0</strong></div>
+                    </div>
+                </div>
+
+                <!-- Configuracoes e Relogio -->
+                <div class="panel">
+                    <h3>Configurações</h3>
+                    
+                    <label for="timeControl">Tempo de Jogo:</label>
+                    <select id="timeControl">
+                        <option value="60">1 Minuto (Bullet)</option>
+                        <option value="180">3 Minutos (Blitz)</option>
+                        <option value="300">5 Minutos (Blitz)</option>
+                        <option value="600" selected>10 Minutos (Rápido)</option>
+                    </select>
+
+                    <label for="difficulty">Nível da IA:</label>
+                    <select id="difficulty">
+                        <option value="1">Fácil (Iniciante)</option>
+                        <option value="2" selected>Médio (Posicional)</option>
+                        <option value="3">Difícil (Avançado)</option>
+                    </select>
+
+                    <label for="themeSelect">Tema do Tabuleiro:</label>
+                    <select id="themeSelect">
+                        <option value="green">Verde Clássico</option>
+                        <option value="dark">Dark Slate</option>
+                        <option value="wood">Madeira</option>
+                    </select>
+
+                    <button id="btnNewGame" class="btn-primary">Novo Jogo</button>
+                </div>
+
+                <!-- Historico de Lances -->
+                <div class="panel moves-panel">
+                    <h3>Histórico de Lances</h3>
+                    <div id="moveHistory" class="move-history"></div>
+                </div>
+
+            </aside>
+        </main>
+    </div>
+
+    <!-- Modal de Promocao de Peao -->
+    <div id="promotionModal" class="modal">
+        <div class="modal-content">
+            <h3>Escolha a Promoção</h3>
+            <div class="promotion-options">
+                <button data-piece="q">♕ Rainha</button>
+                <button data-piece="r">♖ Torre</button>
+                <button data-piece="b">♗ Bispo</button>
+                <button data-piece="n">♘ Cavalo</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts (chess.js e chessboard.js) -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chess.js/0.10.3/chess.min.js"></script>
+    <script src="https://unpkg.com/@chrisoakman/chessboardjs@1.0.0/dist/chessboard-1.0.0.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

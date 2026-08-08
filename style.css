@@ -1,0 +1,206 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+body {
+    background-color: #0f172a;
+    color: #f8fafc;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* LOBBY */
+.lobby-container {
+    width: 100%;
+    max-width: 420px;
+    padding: 20px;
+    text-align: center;
+}
+
+.lobby-card {
+    background: #1e293b;
+    padding: 30px 20px;
+    border-radius: 20px;
+    border: 1px solid #334155;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+}
+
+.lobby-logo {
+    font-size: 4rem;
+    margin-bottom: 10px;
+}
+
+.lobby-card h1 {
+    font-size: 1.8rem;
+    color: #38bdf8;
+    margin-bottom: 5px;
+}
+
+.lobby-card p {
+    color: #94a3b8;
+    font-size: 0.95rem;
+    margin-bottom: 25px;
+}
+
+.lobby-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.btn-lobby {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 16px;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    transition: transform 0.2s, background 0.2s;
+}
+
+.btn-lobby:active { transform: scale(0.98); }
+
+.btn-primary-glow { background: #16a34a; color: #fff; }
+.btn-secondary-glow { background: #334155; color: #fff; }
+
+.btn-lobby .icon { font-size: 2rem; }
+.btn-text strong { display: block; font-size: 1.05rem; }
+.btn-text small { font-size: 0.8rem; opacity: 0.8; }
+
+/* LAYOUT JOGO */
+.app {
+    width: 100%;
+    max-width: 1000px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #1e293b;
+    padding: 10px 15px;
+    border-radius: 10px;
+}
+
+.logo { display: flex; align-items: center; gap: 8px; }
+.btn-icon { background: none; border: none; color: #38bdf8; font-size: 1.4rem; cursor: pointer; }
+.logo h1 { font-size: 1.2rem; color: #38bdf8; }
+
+.btn-accent {
+    background: #2563eb;
+    color: #fff;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.main-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+@media (min-width: 768px) {
+    .main-layout { flex-direction: row; }
+    .sidebar { flex: 0.8; }
+    .board-container { flex: 1.2; }
+}
+
+.board-container {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+}
+
+/* BARRA DE VANTAGEM */
+.eval-bar-container {
+    width: 12px;
+    height: 100%;
+    min-height: 300px;
+    background-color: #111827;
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.eval-bar { width: 100%; background-color: #f8fafc; transition: height 0.3s; }
+.eval-score { position: absolute; top: 2px; left: 50%; transform: translateX(-50%); font-size: 0.6rem; color: #38bdf8; }
+
+/* TABULEIRO E TOUCH CONTROL */
+.board-area {
+    width: 100%;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.board {
+    width: 100%;
+    aspect-ratio: 1;
+    touch-action: none; /* Bloqueia scroll da tela no celular ao arrastar a peca */
+}
+
+.player-tag {
+    background: #1e293b;
+    padding: 6px 10px;
+    border-radius: 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.timer {
+    background: #0f172a;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-family: monospace;
+    font-weight: bold;
+}
+
+.timer.active { background: #16a34a; }
+
+/* SIDEBAR E PANELS */
+.sidebar { display: flex; flex-direction: column; gap: 10px; }
+.panel { background: #1e293b; padding: 12px; border-radius: 8px; }
+.panel h3 { font-size: 0.9rem; margin-bottom: 8px; color: #cbd5e1; }
+.stats-grid { display: flex; justify-content: space-between; font-size: 0.85rem; }
+
+label { display: block; margin-top: 8px; font-size: 0.8rem; color: #94a3b8; }
+select { width: 100%; padding: 8px; border-radius: 6px; background: #0f172a; color: #fff; border: 1px solid #334155; }
+
+.move-history { height: 80px; overflow-y: auto; font-family: monospace; font-size: 0.85rem; color: #94a3b8; }
+
+/* TEMAS */
+.theme-green .white-1e1d3 { background-color: #f0d9b5; }
+.theme-green .black-3c85d { background-color: #769656; }
+.theme-dark .white-1e1d3 { background-color: #475569; }
+.theme-dark .black-3c85d { background-color: #0f172a; }
+.theme-wood .white-1e1d3 { background-color: #e2d6b5; }
+.theme-wood .black-3c85d { background-color: #b88b4a; }
+
+.in-check { background-color: rgba(239, 68, 68, 0.8) !important; }
+
+/* MODAL PROMOÇÃO */
+.modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); justify-content: center; align-items: center; z-index: 1000; }
+.modal-content { background: #1e293b; padding: 20px; border-radius: 12px; text-align: center; }
+.promotion-options { display: flex; gap: 10px; margin-top: 10px; }
+.promotion-options button { padding: 10px; background: #334155; color: #fff; border: none; border-radius: 6px; cursor: pointer; font-size: 1.2rem; }

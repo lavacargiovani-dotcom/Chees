@@ -1,0 +1,1 @@
+// Preparado para biblioteca de regras oficiais.

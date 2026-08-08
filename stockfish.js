@@ -1,0 +1,1 @@
+// Preparado para engine Stockfish.
